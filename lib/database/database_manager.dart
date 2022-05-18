@@ -4,8 +4,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-import '../models/category.dart';
-
 class DatabaseManager {
   DatabaseManager._privateConstructor();
 
@@ -60,30 +58,5 @@ class DatabaseManager {
       INSERT INTO Category(name, type) 
       VALUES ('salary', 'income');
     ''');
-  }
-
-  Future<List<Category>> getCategories() async {
-    Database database = await db.database;
-    var categories = await database.query('Category', orderBy: 'name');
-    List<Category> categoryList = categories.isNotEmpty
-        ? categories.map((category) => Category.fromMap(category)).toList()
-        : [];
-    return categoryList;
-  }
-
-  Future<int> addCategory(Category category) async {
-    Database database = await db.database;
-    return await database.insert('Category', category.toMap());
-  }
-
-  Future<int> removeCategory(int id) async {
-    Database database = await db.database;
-    return await database.delete('Category', where: 'id = ?', whereArgs: [id]);
-  }
-
-  Future<int> updateCategory(Category category) async {
-    Database database = await db.database;
-    return await database.update('Category', category.toMap(),
-        where: 'id = ?', whereArgs: [category.id]);
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:volcanik/database/database_manager.dart';
 
+import '../database/helpers/category_helper.dart';
 import '../models/category.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Center(
         child: FutureBuilder<List<Category>>(
-          future: DatabaseManager.db.getCategories(),
+          future: getCategories(),
           builder:
               (BuildContext context, AsyncSnapshot<List<Category>> snapshot) {
             if (!snapshot.hasData) {
@@ -38,12 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             var newCategory = Category(
                                 id: category.id, name: 'test', type: "expense");
                             setState(() {
-                              DatabaseManager.db.updateCategory(newCategory);
+                              updateCategory(newCategory);
                             });
                           },
                           onLongPress: () {
                             setState(() {
-                              DatabaseManager.db.removeCategory(category.id!);
+                              removeCategory(category.id!);
                             });
                           },
                         ),
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.save),
         onPressed: () async {
-          await DatabaseManager.db.addCategory(
+          await addCategory(
             Category(name: 'salary', type: "income"),
           );
           setState(() {});
