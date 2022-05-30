@@ -40,7 +40,7 @@ class DatabaseManager {
       );
     ''');
     await db.execute('''
-      CREATE TABLE Wallet(
+      CREATE TABLE WalletTransaction(
         id INTEGER PRIMARY KEY,
         description TEXT,
         date TEXT,

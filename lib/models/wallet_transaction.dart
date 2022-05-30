@@ -1,4 +1,4 @@
-class Wallet {
+class WalletTransaction {
   final int? id;
   final String description;
   final DateTime date;
@@ -6,7 +6,7 @@ class Wallet {
   final double expense;
   final int? category;
 
-  Wallet({
+  WalletTransaction({
     this.id,
     required this.description,
     required this.date,
@@ -15,7 +15,8 @@ class Wallet {
     required this.category,
   });
 
-  factory Wallet.fromMap(Map<String, dynamic> json) => Wallet(
+  factory WalletTransaction.fromMap(Map<String, dynamic> json) =>
+      WalletTransaction(
         id: json['id'],
         description: json['description'],
         date: json['date'],
