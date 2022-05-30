@@ -15,7 +15,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return (Scaffold(
       appBar: AppBar(
-        title: const Text("VOLCANIK"),
+        title: const Text(
+          "VOLCANIK",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            letterSpacing: 5,
+          ),
+        ),
+        centerTitle: true,
       ),
       body: Center(
         child: FutureBuilder<List<Category>>(

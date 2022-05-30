@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'themes/volcanik_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,10 +13,8 @@ class WalletApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wallet App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
